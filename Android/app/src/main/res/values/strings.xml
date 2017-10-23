@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">TAS</string>
+    <string-array name="kategorie_array">
+        <item>Wszystkie</item>
+        <item>Akcja</item>
+        <item>Zręcznościowe</item>
+        <item>Rodzinne</item>
+        <item>Dla dzieci</item>
+        <item>Logiczne</item>
+    </string-array>
+</resources>
