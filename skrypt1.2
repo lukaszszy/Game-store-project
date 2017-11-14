@@ -1,0 +1,281 @@
+DROP DATABASE IF EXISTS ONLINE_STORE;
+
+DROP SCHEMA IF EXISTS ONLINE_STORE;
+
+CREATE SCHEMA IF NOT EXISTS ONLINE_STORE DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+USE ONLINE_STORE;
+
+DROP DATABASE IF EXISTS ONLINE_STORE;
+
+CREATE DATABASE ONLINE_STORE
+DEFAULT CHARACTER SET utf8
+DEFAULT COLLATE utf8_general_ci;
+
+USE ONLINE_STORE;
+
+CREATE TABLE USERS(
+User_ID int NOT NULL AUTO_INCREMENT,
+Name varchar(128),
+Surname varchar(128),
+Email varchar(128) NOT NULL UNIQUE,
+Phone int DEFAULT 0,
+Login varchar(128) NOT NULL UNIQUE,
+Password varchar(128) NOT NULL,
+Account int DEFAULT 0,
+Address varchar(128),
+Town varchar(128),
+ZipCode varchar(10),
+PRIMARY KEY (User_ID)
+) DEFAULT CHARSET=utf8;
+
+CREATE TABLE GAMES(
+Game_ID int NOT NULL AUTO_INCREMENT,
+Image_ID int DEFAULT 0,
+Title varchar(128) NOT NULL,
+Company varchar(128) NOT NULL,
+Description varchar(255) NOT NULL,
+Price float NOT NULL DEFAULT 99.99,
+PRIMARY KEY (Game_ID)
+) DEFAULT CHARSET=utf8;
+
+
+/* Kategoria AKCJA */
+CREATE TABLE GAMES_ACTION (
+Game_ID int NOT NULL,
+FOREIGN KEY(Game_ID) REFERENCES GAMES(Game_ID)
+);
+
+/* Kategoria MMO */
+CREATE TABLE GAMES_MMO (
+Game_ID int NOT NULL,
+FOREIGN KEY(Game_ID) REFERENCES GAMES(Game_ID)
+);
+
+/* Kategoria NiezaleĹĽne */
+CREATE TABLE GAMES_INDEPENDENT (
+Game_ID int NOT NULL,
+FOREIGN KEY(Game_ID) REFERENCES GAMES(Game_ID)
+);
+
+/* Kategoria Przygodowe */
+CREATE TABLE GAMES_ADVENTURE (
+Game_ID int NOT NULL,
+FOREIGN KEY(Game_ID) REFERENCES GAMES(Game_ID)
+);
+
+/* Kategoria RPG */
+CREATE TABLE GAMES_RPG (
+Game_ID int NOT NULL,
+FOREIGN KEY(Game_ID) REFERENCES GAMES(Game_ID)
+);
+
+/* Kategoria Sport */
+CREATE TABLE GAMES_SPORT (
+Game_ID int NOT NULL,
+FOREIGN KEY(Game_ID) REFERENCES GAMES(Game_ID)
+);
+
+/* Kategoria WyĹ›cigowe */
+CREATE TABLE GAMES_RACING (
+Game_ID int NOT NULL,
+FOREIGN KEY(Game_ID) REFERENCES GAMES(Game_ID)
+);
+
+/* Kategoria Symulacje */
+CREATE TABLE GAMES_SIMULATION (
+Game_ID int NOT NULL,
+FOREIGN KEY(Game_ID) REFERENCES GAMES(Game_ID)
+);
+
+
+
+
+CREATE TABLE IMAGES(
+ID int PRIMARY KEY AUTO_INCREMENT,
+Image MEDIUMBLOB NOT NULL
+);
+
+CREATE TABLE ORDERS(
+Order_ID int NOT NULL AUTO_INCREMENT,
+User_ID int NOT NULL,
+Game_ID int NOT NULL,
+Amount int NOT NULL DEFAULT 1,
+PRIMARY KEY (Order_ID),
+FOREIGN KEY (User_ID) REFERENCES USERS(User_ID),
+FOREIGN KEY (Game_ID) REFERENCES GAMES(Game_ID)
+) DEFAULT CHARSET=utf8;
+
+CREATE TABLE PAYMENTS(
+Payment_ID int NOT NULL AUTO_INCREMENT,
+Order_ID int NOT NULL,
+Type_Payment varchar(255),
+PRIMARY KEY (Payment_ID),
+FOREIGN KEY (Order_ID) REFERENCES ORDERS(Order_ID)
+);
+
+CREATE TABLE SHIPMENTS(
+Shipment_ID int NOT NULL AUTO_INCREMENT,
+Order_ID int NOT NULL,
+Type_Shipment varchar(255),
+PRIMARY KEY (Shipment_ID),
+FOREIGN KEY (Order_ID) REFERENCES ORDERS(Order_ID)
+);
+
+
+INSERT INTO USERS( Name, Surname, Email, Phone, Login, Password, Account, Address, Town, ZipCode )
+VALUES ( "Ĺukasz", "Szymula", "admin@gmail.com", 123456789, "admin", "pass123", 0, "Plac WolnoĹ›ci 22/4", "Warszawa", "11444" );
+
+INSERT INTO GAMES( Title, Company, Description, Price )
+VALUES ( "Tomb Rider", "RPG", "Bede graĹ‚ w gre", 109.99 );
+
+INSERT INTO GAMES( Title, Company, Description, Price )
+VALUES ( "Sims", "EA", "Bede graĹ‚ w gre", 109.99 );
+
+INSERT INTO GAMES_ACTION(Game_ID) VALUES ("1");
+INSERT INTO GAMES_ACTION(Game_ID) VALUES ("2");
+INSERT INTO GAMES_SIMULATION(Game_ID) VALUES ("2");
+
+
+
+INSERT INTO ORDERS( User_ID, Game_ID) VALUES ( "1", "1" );
+INSERT INTO ORDERS( User_ID, Game_ID) VALUES ( "1", "2" );
+
+
+/* Zapytanie - lista wszytstkich zamĂłwieĹ„ u wszytskich uĹĽytkownikĂłw */
+SELECT p.Name, p.Surname, GAMES.Title, GAMES.Price FROM
+( SELECT ORDERS.Game_ID, USERS.Name, USERS.Surname FROM ORDERS INNER JOIN USERS ON ORDERS.User_ID = USERS.User_ID ) p
+INNER JOIN GAMES on p.Game_ID = GAMES.Game_ID ;
+
+/* Zapytanie - TOP 10 Gier */ 
+SELECT GAMES.Title, GAMES.Price, count(*) AS SUMA 
+FROM
+( 	SELECT ORDERS.Game_ID, USERS.Name, USERS.Surname 
+	FROM ORDERS 
+	INNER JOIN USERS ON ORDERS.User_ID = USERS.User_ID ) p
+INNER JOIN GAMES on p.Game_ID = GAMES.Game_ID
+GROUP BY GAMES.Title
+ORDER BY count(*) DESC
+LIMIT 10;
+
+/* Zapytanie - lista zamĂłwieĹ„ po ID uĹĽytkwnika */
+DELIMITER //
+CREATE PROCEDURE simpleproc
+(IN param1 CHAR(20))
+BEGIN
+	SELECT p.Name, p.Surname, GAMES.Title, GAMES.Price 
+    FROM
+	( 	SELECT ORDERS.Game_ID, USERS.Name, USERS.Surname FROM ORDERS 
+		INNER JOIN USERS ON ORDERS.User_ID = USERS.User_ID 
+	WHERE USERS.User_ID like param1) p
+	INNER JOIN GAMES on p.Game_ID = GAMES.Game_ID ;
+END //
+DELIMITER ;
+
+CALL simpleproc('1'); /* Param User_ID */
+
+
+/* Zapyatanie wszystkie gry AKCJI */
+SELECT Games.Game_ID, Games.Title FROM GAMES_ACTION INNER JOIN GAMES ON GAMES_ACTION.Game_ID=GAMES.Game_ID
+
+/* Zapyatanie wszystkie gry MMO */
+SELECT Games.Game_ID, Games.Title FROM GAMES_MMO INNER JOIN GAMES ON GAMES_MMO.Game_ID=Games.Game_ID
+
+/* Zapyatanie wszystkie gry NiezaleĹĽne */
+SELECT Games.Game_ID, Games.Title FROM GAMES_INDEPENDENT INNER JOIN GAMES ON GAMES_INDEPENDENT.Game_ID=Games.Game_ID
+
+/* Zapyatanie wszystkie gry Przygodowe */
+SELECT Games.Game_ID, Games.Title FROM GAMES_ADVENTURE INNER JOIN GAMES ON GAMES_ADVENTURE.Game_ID=Games.Game_ID
+
+/* Zapyatanie wszystkie gry RPG */
+SELECT Games.Game_ID, Games.Title FROM GAMES_RPG INNER JOIN GAMES ON GAMES_RPG.Game_ID=Games.Game_ID
+
+/* Zapyatanie wszystkie gry Sportowe */
+SELECT Games.Game_ID, Games.Title FROM GAMES_SPORT INNER JOIN GAMES ON GAMES_SPORT.Game_ID=Games.Game_ID
+
+/* Zapyatanie wszystkie gry WyĹ›cigowe */
+SELECT Games.Game_ID, Games.Title FROM GAMES_RACING INNER JOIN GAMES ON GAMES_RACING.Game_ID=Games.Game_ID
+
+/* Zapyatanie wszystkie gry Symulacja */
+SELECT Games.Game_ID, Games.Title FROM GAMES_SIMULATION INNER JOIN GAMES ON GAMES_SIMULATION.Game_ID=Games.Game_ID
+
+
+/* Zapytanie top 10 najchetniej kupowanych gier Akcja */
+SELECT p.Game_ID, p.Title, p.Price, count(*) AS SUMA 
+FROM (	SELECT GAMES.Game_ID, GAMES.Title, GAMES.Price 
+		FROM ORDERS 
+        INNER JOIN GAMES ON ORDERS.Game_ID = GAMES.Game_ID ) p 
+INNER JOIN GAMES_ACTION ON p.Game_ID = GAMES_ACTION.Game_ID
+GROUP BY p.Title
+ORDER BY count(*) DESC
+LIMIT 10;
+
+/* Zapytanie top 10 najchetniej kupowanych gier MMO */
+SELECT p.Game_ID, p.Title, p.Price, count(*) AS SUMA 
+FROM (	SELECT GAMES.Game_ID, GAMES.Title, GAMES.Price 
+		FROM ORDERS 
+        INNER JOIN GAMES ON ORDERS.Game_ID = GAMES.Game_ID ) p 
+INNER JOIN GAMES_MMO ON p.Game_ID = GAMES_MMO.Game_ID
+GROUP BY p.Title
+ORDER BY count(*) DESC
+LIMIT 10;
+
+/* Zapytanie top 10 najchetniej kupowanych gier NiezaleĹĽne */
+SELECT p.Game_ID, p.Title, p.Price, count(*) AS SUMA 
+FROM (	SELECT GAMES.Game_ID, GAMES.Title, GAMES.Price 
+		FROM ORDERS 
+        INNER JOIN GAMES ON ORDERS.Game_ID = GAMES.Game_ID ) p 
+INNER JOIN GAMES_INDEPENDENT ON p.Game_ID = GAMES_INDEPENDENT.Game_ID
+GROUP BY p.Title
+ORDER BY count(*) DESC
+LIMIT 10;
+
+/* Zapytanie top 10 najchetniej kupowanych gier Przygodowe */
+SELECT p.Game_ID, p.Title, p.Price, count(*) AS SUMA 
+FROM (	SELECT GAMES.Game_ID, GAMES.Title, GAMES.Price 
+		FROM ORDERS 
+        INNER JOIN GAMES ON ORDERS.Game_ID = GAMES.Game_ID ) p 
+INNER JOIN GAMES_ADVENTURE ON p.Game_ID = GAMES_ADVENTURE.Game_ID
+GROUP BY p.Title
+ORDER BY count(*) DESC
+LIMIT 10;
+
+/* Zapytanie top 10 najchetniej kupowanych gier RPG */
+SELECT p.Game_ID, p.Title, p.Price, count(*) AS SUMA 
+FROM (	SELECT GAMES.Game_ID, GAMES.Title, GAMES.Price 
+		FROM ORDERS 
+        INNER JOIN GAMES ON ORDERS.Game_ID = GAMES.Game_ID ) p 
+INNER JOIN GAMES_RPG ON p.Game_ID = GAMES_RPG.Game_ID
+GROUP BY p.Title
+ORDER BY count(*) DESC
+LIMIT 10;
+
+/* Zapytanie top 10 najchetniej kupowanych gier Sport */
+SELECT p.Game_ID, p.Title, p.Price, count(*) AS SUMA 
+FROM (	SELECT GAMES.Game_ID, GAMES.Title, GAMES.Price 
+		FROM ORDERS 
+        INNER JOIN GAMES ON ORDERS.Game_ID = GAMES.Game_ID ) p 
+INNER JOIN GAMES_SPORT ON p.Game_ID = GAMES_SPORT.Game_ID
+GROUP BY p.Title
+ORDER BY count(*) DESC
+LIMIT 10;
+
+/* Zapytanie top 10 najchetniej kupowanych gier Racing */
+SELECT p.Game_ID, p.Title, p.Price, count(*) AS SUMA 
+FROM (	SELECT GAMES.Game_ID, GAMES.Title, GAMES.Price 
+		FROM ORDERS 
+        INNER JOIN GAMES ON ORDERS.Game_ID = GAMES.Game_ID ) p 
+INNER JOIN GAMES_RACING ON p.Game_ID = GAMES_RACING.Game_ID
+GROUP BY p.Title
+ORDER BY count(*) DESC
+LIMIT 10;
+
+/* Zapytanie top 10 najchetniej kupowanych gier Akcja */
+SELECT p.Game_ID, p.Title, p.Price, count(*) AS SUMA 
+FROM (	SELECT GAMES.Game_ID, GAMES.Title, GAMES.Price 
+		FROM ORDERS 
+        INNER JOIN GAMES ON ORDERS.Game_ID = GAMES.Game_ID ) p 
+INNER JOIN GAMES_SIMULATION ON p.Game_ID = GAMES_SIMULATION.Game_ID
+GROUP BY p.Title
+ORDER BY count(*) DESC
+LIMIT 10;
