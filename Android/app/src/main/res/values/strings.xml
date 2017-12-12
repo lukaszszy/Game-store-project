@@ -3,9 +3,14 @@
     <string-array name="kategorie_array">
         <item>Wszystkie</item>
         <item>Akcja</item>
-        <item>Zręcznościowe</item>
-        <item>Rodzinne</item>
-        <item>Dla dzieci</item>
-        <item>Logiczne</item>
+        <item>MMO</item>
+        <item>Niezależne</item>
+        <item>Proste</item>
+        <item>Przygodowe</item>
+        <item>RPG</item>
+        <item>Sportowe</item>
+        <item>Strategie</item>
+        <item>Symlacje</item>
+        <item>Wyscigi</item>
     </string-array>
 </resources>

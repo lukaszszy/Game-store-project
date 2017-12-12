@@ -1,0 +1,78 @@
+
+#menuLeft > ol > li{
+  margin-top: 30px;
+  width: 80%;
+  float: none;
+  border: none;
+  padding: 5px;
+  border-bottom: 1px dashed #000000;
+}
+
+#menuLeft{
+  margin-top: 30px;
+  float: left;
+  width: 20%;
+}
+
+#content{
+  border-left: 1px solid  #4f4848;
+  padding: 50px 0 50px 50px;
+  float: left;
+  width: 70%;
+  text-align: justify;
+}
+
+.productTile{
+  padding: 30px;
+  margin: 10px;
+  border: 1px dotted #2a324b;
+  text-align: center;
+  float: left;
+  max-width: 20%;
+  height: 330px;
+}
+
+.miniature{
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+}
+
+.miniature img{
+  border: 1px solid #2a324b;
+  width: 250px;
+  height: auto;
+}
+
+.productName{
+  padding: 3px;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+button{
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #f7c59f;
+    padding: 5px;
+    margin-top: 5px;
+    border: none;
+    color: #363842;
+    font-weight: lighter;
+    border-radius: 3px;
+    -webkit-box-shadow: 0px 0px 2px -1px rgba(0,0,0,1);
+    -moz-box-shadow: 0px 0px 2px -1px rgba(0,0,0,1);
+    box-shadow: 0px 0px 2px -1px rgba(0,0,0,1);
+}
+
+button a{
+  text-decoration: none;
+  color: #363842;
+}
+
+button:hover{
+    background-color: #fbe4d3;
+    cursor: pointer;
+}

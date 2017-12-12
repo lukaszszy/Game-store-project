@@ -1,0 +1,30 @@
+/**zawartość containera na stronie głównej**/
+
+#menuLeft > ol > li{
+  margin-top: 30px;
+  width: 80%;
+  float: none;
+  border: none;
+  padding: 5px;
+  border-bottom: 1px dashed #000000;
+}
+
+#menuLeft{
+  margin-top: 30px;
+  float: left;
+  width: 20%;
+}
+
+#content{
+  border-left: 1px solid  #4f4848;
+  padding: 50px;
+  float: left;
+  width: 70%;
+  text-align: justify;
+}
+
+#adSlideshow{
+  text-align: center;
+  padding: 10%;
+  border: 1px solid #000000;;
+}

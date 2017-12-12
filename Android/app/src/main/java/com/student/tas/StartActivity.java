@@ -76,4 +76,9 @@ public class StartActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void webClick(View view){
+        Intent intent = new Intent(StartActivity.this, WebActivity.class);
+        startActivity(intent);
+    }
+
 }

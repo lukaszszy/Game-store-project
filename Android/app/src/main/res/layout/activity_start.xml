@@ -67,6 +67,13 @@
                 android:onClick="searchClick"
                 android:text="SZUKAJ" />
 
+            <Button
+                android:id="@+id/webButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="webClick"
+                android:text="Przejdz do Webowej wersji strony" />
+
         </LinearLayout>
 
     </LinearLayout>

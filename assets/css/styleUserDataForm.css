@@ -1,0 +1,97 @@
+#userAccount{
+  margin: 100px;
+  padding: 70px 70px 70px 70px;
+  border: 1px solid #2a324b;
+  -webkit-box-shadow: 0px 0px 12px -1px rgba(0,0,0,1);
+  -moz-box-shadow: 0px 0px 12px -1px rgba(0,0,0,1);
+  box-shadow: 0px 0px 12px -1px rgba(0,0,0,1);
+  background-color: #f1f5ee;
+}
+
+#userAccountMenu{
+  background-color: #000;
+  margin-bottom: 100px;
+}
+
+#userAccountMenu > ul > li{
+    float: left;
+    list-style: none;
+    font-size: 30px;
+
+}
+#userAccountMenu > ul > li a{
+  padding: 10px;
+  text-decoration: none;
+  color: #2f2626;
+}
+
+#userAccountMenu > ul > li a:hover{
+  text-decoration: none;
+  background-color: #2a324b;
+  color: #fff;
+  border-radius: 2px;
+
+}
+
+
+.dataBox{
+  margin: 10px;
+  background-color: #d1d5dd;
+  padding: 30px;
+
+}
+
+.inputTypeDescription{
+  font-size: 30px;
+  border-top: solid 1px #fff;
+  border-bottom: solid 1px #fff;
+  padding-left: 20px;
+}
+
+.inputDescription{
+  position: relative;
+  font-size: 25px;
+  padding: 15px;
+  margin: 15px;
+}
+
+.inputBox{
+  padding: 20px;
+  margin-left: 300px;
+}
+
+input{
+  font-size: 15px;
+  border-radius: 5px;
+  border: 1px;
+  padding: 8px;
+  margin: 5px;
+  width: 300px;
+  height: 50px;
+  background-color: #fff;
+}
+
+input:focus, input:hover{
+  background-color: #f2f4f7;
+}
+
+label{
+  height: 50px;
+  padding: 12px;
+  float: left;
+}
+
+.changeUserData{
+  margin-left: auto;
+  margin-right: auto;
+  padding: 30px;
+  font-size: 20px;
+  color: #fff;
+  background-color: #767b91;
+  border-radius: 5px;
+  width: 30%;
+}
+
+.changeUserData:hover, .changeUserData:focus{
+  background-color: #2a324b;
+}

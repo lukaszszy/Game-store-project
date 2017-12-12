@@ -21,7 +21,8 @@
         <activity android:name=".SearchedActivity" />
         <activity android:name=".loginOrRegisterActivity" />
         <activity android:name=".loginActivity" />
-        <activity android:name=".registerActivity"></activity>
+        <activity android:name=".registerActivity" />
+        <activity android:name=".WebActivity"></activity>
     </application>
 
 </manifest>

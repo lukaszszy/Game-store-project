@@ -1,0 +1,129 @@
+/*uzyte kolory: f7c59f 2a324b 767b91 c7ccdb e1e5ee*/
+
+/**Szablon dla całej strony**/
+body{
+   background-color: #2a324b;
+   font-family: 'Hind', sans-serif;
+   color: #2a324b;
+
+}
+
+#container{
+  width: 80%;
+  background-color: #e1e5ee;
+  margin-left: auto;
+  margin-right: auto;
+  border-left: 1px solid #4f4848;
+  border-right: 1px solid #4f4848;
+  padding: 0px;
+  -webkit-box-shadow: 0px 0px 32px -1px rgba(0,0,0,1);
+  -moz-box-shadow: 0px 0px 32px -1px rgba(0,0,0,1);
+  box-shadow: 0px 0px 32px -1px rgba(0,0,0,1);
+}
+
+#logo{
+  float: left;
+  padding: 20px 0px 20px 50px;
+}
+
+#iconBox{
+  padding: 20px 30px 20px 0px;
+}
+
+.icon{
+  float: right;
+  font-size: 13px;
+  text-align: center;
+  margin-right: 10px;
+  display: block;
+}
+
+#searchbar{
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  width: 80%;
+}
+
+input[name="search"] {
+	width:80%;
+    border: 2px solid #ddd;
+  	border-radius: 5px;
+  	font-size: 20px;
+  	padding: 10px;
+  	outline: none;
+  	margin-top: 10px;
+    float: left;
+  }
+
+
+.searchButton{
+  background-color: #363842;
+  border: none;
+  color: white;
+/* padding: 10px 30px;*/
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 20px;
+  margin: -14px;
+  }
+
+.searchButton:hover{
+  background-color: #f7c59f;
+
+}
+input[name="search"], .searchButton {
+  display:block;
+}
+
+#menuTop{
+  text-align: center;
+  margin-top: 20px;
+  width: 100%;
+  padding: 0;
+  background-color: #767b91;
+
+}
+
+ol > li{
+    width: 8%;
+    float: left;
+    margin-left: 5px;
+    text-align: center;
+    padding: 15px 8px 15px 8px;
+    border-right: 1px solid #847577;
+
+    list-style: none;
+  }
+
+ol > li:first-child {
+  border-left: 1px solid #847577;
+}
+ol > li a{
+  color: #2f2626;
+  text-decoration: none;
+  display: block;
+
+}
+
+ol > li a:hover{
+  color: #ffffff;
+  text-decoration: none;
+  background-color: #2a324b;
+  border-radius: 3px;
+}
+
+
+a.iconlink{
+  color: #363842;
+  text-decoration: none;
+  display: block;
+  padding: 5px;
+}
+
+a.iconlink:hover{
+  color: #ffffff;
+  background-color: #2a324b;
+  border-radius: 3px;
+}

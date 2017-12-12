@@ -22,44 +22,65 @@
         android:layout_marginBottom="8dp">
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/gameCounter"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Wyszukana gra X z Y" />
+            android:layout_height="wrap_content" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/nazwaTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Nazwa gry"
+            android:text="KLIKNIJ POPRZEDNIA LUB NASTEPNA"
             android:textSize="24sp" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/companytextView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Gatunek"
-            android:textSize="18sp" />
+            android:layout_height="wrap_content" />
 
-        <TextView
-            android:id="@+id/textView5"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Opis gry" />
+            android:layout_height="164dp">
 
-        <TextView
-            android:id="@+id/textView4"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/opisTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </ScrollView>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Cena"
-            android:textSize="18sp" />
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/TextView2"
+                android:layout_width="87dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Cena"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/cenaTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="18sp" />
+        </LinearLayout>
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/gameImageView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:srcCompat="@mipmap/ic_launcher"
-            android:layout_weight="0.34" />
+            android:layout_height="159dp"
+            android:layout_weight="0.34"
+            app:srcCompat="@mipmap/ic_launcher" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -71,6 +92,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:onClick="prevGame"
                 android:text="Poprzednia" />
 
             <Button
@@ -78,6 +100,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:onClick="nextGame"
                 android:text="Nastepna" />
 
         </LinearLayout>
