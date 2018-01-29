@@ -1,0 +1,56 @@
+#registerBox{
+  background-color: #242424;
+  width: 70%;
+  margin: 6rem 3rem 3rem 3rem;
+  padding: 3rem 2rem 2rem 1rem;
+  border-radius: 5px;
+  -webkit-box-shadow: 2px 2px 10px -1px rgba(0,0,0,1);
+  -moz-box-shadow: 2px 2px 10px -1px rgba(0,0,0,1);
+  box-shadow: 2px 2px 10px -1px rgba(0,0,0,1);
+}
+
+
+#registerBox input{
+  font-size: 1rem;
+  border-radius: 0.3rem;
+  background-color: #c5c5c5;
+  width: 50%;
+  margin: 1rem 0rem 0rem 2rem ;
+  float:left;
+}
+
+#registerBox form div input:focus, input:hover{
+  background-color: #909090;
+}
+
+#registerBox div label{
+  padding: 0.2rem;
+  margin-top: 1rem;
+  font-size: 1rem;
+  float:left;
+  
+}
+
+#registerBox #termsCheckbox{
+	float: left;
+}
+
+#registerBox form div label[for="agree"]{
+	margin-left: 0px;
+	position: sticky;
+}
+
+registerBox > form > .confirmationButton{
+  margin: 0.6rem 0rem 0.6rem 0.6rem;
+  padding: 1rem;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #161616;
+  border-radius: 0.2rem;
+  width: 70%;
+  border: none;
+}
+
+registerBox > .confirmationButton:hover, .confirmationButton:focus{
+  background-color: #4e4e4e;
+}

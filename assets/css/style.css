@@ -1,16 +1,14 @@
-/*uzyte kolory: f7c59f 2a324b 767b91 c7ccdb e1e5ee*/
-
-/**Szablon dla całej strony**/
-body{
-   background-color: #2a324b;
+﻿body{
+   background-image: url(broken_noise.png);
+   background-repeat: repeat;
    font-family: 'Hind', sans-serif;
-   color: #2a324b;
+   color: #B5B5B7;
 
 }
 
 #container{
   width: 80%;
-  background-color: #e1e5ee;
+  background-color: #313132;
   margin-left: auto;
   margin-right: auto;
   border-left: 1px solid #4f4848;
@@ -19,6 +17,10 @@ body{
   -webkit-box-shadow: 0px 0px 32px -1px rgba(0,0,0,1);
   -moz-box-shadow: 0px 0px 32px -1px rgba(0,0,0,1);
   box-shadow: 0px 0px 32px -1px rgba(0,0,0,1);
+}
+
+#content{
+  background-color: #e1e5ee;
 }
 
 #logo{
@@ -30,93 +32,136 @@ body{
   padding: 20px 30px 20px 0px;
 }
 
+
 .icon{
   float: right;
-  font-size: 13px;
+  font-size: 0.8rem;
   text-align: center;
   margin-right: 10px;
   display: block;
 }
 
+#cart{
+  width: 12rem;
+  height: 10rem;
+  background-color: #242424;
+  z-index: 1;
+  border-radius: 0.5rem;
+  -webkit-box-shadow: 2px 2px 10px -1px rgba(0,0,0,1);
+  -moz-box-shadow: 2px 2px 10px -1px rgba(0,0,0,1);
+  box-shadow: 2px 2px 10px -1px rgba(0,0,0,1);
+  display: none;
+  position: absolute;
+  padding-top: 1rem;
+}
+
+
+#cartButton{
+  width:90%;
+  background-color: #161616;
+  border: none;
+  height: 20%;
+  margin: 1rem 0 1rem 0;
+  border-radius: 5px;
+  color: #2a324b;
+  font-weight: bold;
+}
+
+#loginbox{
+  width:70%;
+}
+
+
 #searchbar{
   margin-left: auto;
   margin-right: auto;
   text-align: center;
-  width: 80%;
+  width: 70%;
 }
 
 input[name="search"] {
-	width:80%;
+	/*width:80%;*/
     border: 2px solid #ddd;
-  	border-radius: 5px;
-  	font-size: 20px;
+  	border-radius: 0.5rem;
+  	font-size: 1.5rem;
   	padding: 10px;
   	outline: none;
-  	margin-top: 10px;
     float: left;
   }
 
-
-.searchButton{
+.searchBarGrid{
+	display: grid;
+	grid-template-columns: 4fr 1fr;
+}
+  
+#searchbar > form > button.searchButton{
   background-color: #363842;
   border: none;
   color: white;
-/* padding: 10px 30px;*/
+  padding: 10px 30px;
   border-radius: 5px;
   cursor: pointer;
   text-decoration: none;
   font-size: 20px;
-  margin: -14px;
   }
 
-.searchButton:hover{
-  background-color: #f7c59f;
+#searchbar > form > button.searchButton:hover{
+  background-color: #1C1C1C;
 
 }
+/*
 input[name="search"], .searchButton {
   display:block;
-}
+}*/
 
 #menuTop{
-  text-align: center;
   margin-top: 20px;
-  width: 100%;
-  padding: 0;
-  background-color: #767b91;
-
+  background-color: #3c3c3c;
+  display: grid;
+  grid-auto-flow: column;
+  border-right: 1px solid #242738;
 }
 
-ol > li{
-    width: 8%;
-    float: left;
-    margin-left: 5px;
+
+.topMenuItem{
     text-align: center;
     padding: 15px 8px 15px 8px;
-    border-right: 1px solid #847577;
-
-    list-style: none;
+    color: #B5B5B7;
+    text-decoration: underline;
+    border-right: 1px solid #242738;
   }
 
-ol > li:first-child {
-  border-left: 1px solid #847577;
-}
-ol > li a{
-  color: #2f2626;
-  text-decoration: none;
-  display: block;
 
+#sortMenu{
+  margin-top: 10px;
+  margin-bottom: 2rem;
+  background-color: #3c3c3c;
+  display: flex;
+  flex-direction: row; 
+  float:right; 
 }
 
-ol > li a:hover{
+
+.sortMenuItem{
+    text-align: center;
+    padding: 10px 8px 10px 8px;
+    border-right: 1px solid #242738;
+    color: #B5B5B7;
+    font-size: 0.9rem;
+    text-decoration: underline;
+  }
+
+.sortMenuItem a{
+}
+
+.topMenuItem:hover{
   color: #ffffff;
-  text-decoration: none;
-  background-color: #2a324b;
-  border-radius: 3px;
+  background-color: #242424;
 }
 
 
 a.iconlink{
-  color: #363842;
+  color: #B5B5B7;
   text-decoration: none;
   display: block;
   padding: 5px;
@@ -124,6 +169,40 @@ a.iconlink{
 
 a.iconlink:hover{
   color: #ffffff;
-  background-color: #2a324b;
+  background-color: #3c3c3c;
   border-radius: 3px;
+}
+
+h1{
+  background-color: #3c3c3c;
+  width: auto;
+  padding: 0.5rem 0 0.5rem 0.5rem;
+  font-size: 1.5rem;
+  color: #fff;
+  margin-bottom: 2rem;
+}
+
+
+
+.confirmationTextArea{
+  background-color: #161616;
+  font-size: 2rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5rem;
+  font-weight: bold;
+  width: 50%;
+  padding: 4rem;
+  -webkit-box-shadow: 2px 2px 10px -1px rgba(0,0,0,1);
+  -moz-box-shadow: 2px 2px 10px -1px rgba(0,0,0,1);
+  box-shadow: 2px 2px 10px -1px rgba(0,0,0,1);
+
+}
+
+footer{
+   margin-top: 3rem;
+   background-color: #000;
+   color: #fff;
+   padding: 1.5rem;
+   text-align: center;
 }

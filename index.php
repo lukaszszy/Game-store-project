@@ -8,23 +8,26 @@
 	require_once("smarty/libs/Smarty.class.php");
 	$smarty=new Smarty();
 	
-	$query = "SELECT id_category, name FROM `tas_categories`;";
-	$result = mysqli_query($sql, $query) or die("Connection error".mysqli_error($sql));
-	while($row = mysqli_fetch_row($result)){
-		$category = array(
-			"id"		=> $row[0],
-			"name"		=> $row[1]
-		);
-		$category_list[] = $category;
-	}
-	$smarty->assign("category_list", $category_list);
 	
-	if($_SESSION['valid']){
-		echo "jestes zalgowany";
+	$query1 = "CALL `topTenGames`();";
+	$result = mysqli_query($sql, $query1) or die("Connection error".mysqli_error($sql));
+	while($row = mysqli_fetch_row($result)){
+		$bestAction = array(
+			"Game_ID"	=> $row[0],
+			"Title"		=> $row[1],
+			"Company"	=> $row[2],
+			"Price"		=> $row[3]
+		);
+		$bestAction_search[] = $bestAction;
 	}
+	$smarty->assign("bestAction_search", $bestAction_search);
+	
+	$smarty->assign("zalogowany", $_SESSION['valid']);
+	
 	
 	////Display HTML
 	$smarty->display('_HEADER.tpl');
 	$smarty->display('index.tpl');
 	$smarty->display('_FOOTER.tpl');
+	
 ?>

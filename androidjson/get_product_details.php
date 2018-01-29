@@ -35,37 +35,58 @@ if (isset($_GET["Game_ID"])) {
             $product["price"] = $result["Price"];
             $product["description"] = $result["Description"];
             // success
-            $response["success"] = 1;
+            //$response["success"] = 1;
  
             // user node
-            $response["product"] = array();
+            $response["products"] = array();
  
-            array_push($response["product"], $product);
+            array_push($response["products"], $product);
  
             // echoing JSON response
             echo json_encode($response);
-        } else {
-            // no product found
-            $response["success"] = 0;
-            $response["message"] = "No product found";
- 
-            // echo no users JSON
-            echo json_encode($response);
         }
-    } else {
-        // no product found
-        $response["success"] = 0;
-        $response["message"] = "No product found";
+    } 
+}
+
+
+if (isset($_GET["title"])) {
+    $title = $_GET['title'];
  
-        // echo no users JSON
-        echo json_encode($response);
-    }
-} else {
-    // required field is missing
-    $response["success"] = 0;
-    $response["message"] = "Required field(s) is missing";
- 
-    // echoing JSON response
-    echo json_encode($response);
+    // get all products from products table
+	$result = mysql_query("SET NAMES UTF8;");
+	$result = mysql_query("SELECT *FROM tas_games WHERE Title like '%$title%'");
+	 
+	// check for empty result
+	if (mysql_num_rows($result) > 0) {
+		// looping through all results
+		// products node
+		$response["products"] = array();
+	 
+		while ($row = mysql_fetch_array($result)) {
+			// temp user array
+			$product = array();
+			$product["Game_ID"] = $row["Game_ID"];
+			$product["name"] = $row["Title"];
+			$product["price"] = $row["Price"];
+			$product["description"] = $row["Description"];
+			$product["company"] = $row["Company"];
+			//$product["created_at"] = $row["created_at"];
+	 
+			// push single product into final response array
+			array_push($response["products"], $product);
+		}
+		// success
+		//$response["success"] = 1;
+	 
+		// echoing JSON response
+		echo json_encode($response);
+	} else {
+		// no products found
+		//$response["success"] = 0;
+		$response["message"] = "No products found";
+	 
+		// echo no users JSON
+		echo json_encode($response);
+	}
 }
 ?>

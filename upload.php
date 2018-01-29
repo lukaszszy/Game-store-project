@@ -9,20 +9,8 @@
 	$smarty=new Smarty();
 	
 
-	if(!!$_FILES['file']['tmp_name']){
-		$allow = array("jpg", "jpeg", "gif", "png");
-		$todir = 'uploads/';
-		$info = explode('.', strtolower( $_FILES['file']['name']) );
-
-		if(in_array(end($info), $allow))
-			if(move_uploaded_file( $_FILES['file']['tmp_name'], $todir . basename($_FILES['file']['name'] ) ) )
-				{}
-			else
-				echo 'error2';
-		else
-			echo 'error1';
-	}
-	
+	$smarty->assign("zalogowany", $_SESSION['valid']);
+	$smarty->assign("user_type", $_SESSION['utype']);
 	////Display HTML
 	$smarty->display('_HEADER.tpl');
 	$smarty->display('upload.tpl');

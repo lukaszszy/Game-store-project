@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">TAS</string>
+    <string-array name="kategorie_array">
+        <item>Wszystkie</item>
+        <item>Akcja</item>
+        <item>MMO</item>
+        <item>Niezalezne</item>
+        <item>Proste</item>
+        <item>Przygodowe</item>
+        <item>RPG</item>
+        <item>Sportowe</item>
+        <item>Strategie</item>
+        <item>Symulacje</item>
+        <item>Wyscigi</item>
+    </string-array>
+</resources>

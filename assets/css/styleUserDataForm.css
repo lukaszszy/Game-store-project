@@ -5,7 +5,7 @@
   -webkit-box-shadow: 0px 0px 12px -1px rgba(0,0,0,1);
   -moz-box-shadow: 0px 0px 12px -1px rgba(0,0,0,1);
   box-shadow: 0px 0px 12px -1px rgba(0,0,0,1);
-  background-color: #f1f5ee;
+  background-color: #3c3c3c;
 }
 
 #userAccountMenu{
@@ -22,23 +22,50 @@
 #userAccountMenu > ul > li a{
   padding: 10px;
   text-decoration: none;
-  color: #2f2626;
+  color: #B5B5B7;
 }
 
 #userAccountMenu > ul > li a:hover{
   text-decoration: none;
-  background-color: #2a324b;
+  background-color: #242424;
   color: #fff;
   border-radius: 2px;
 
 }
+/**********************************************************************/
 
 
 .dataBox{
-  margin: 10px;
-  background-color: #d1d5dd;
-  padding: 30px;
+  display: grid;
+  grid-template-columns: 6fr 6fr 1fr;
+  grid-gap: 2rem 2rem;
+}
 
+.adminBox{
+  display: grid;
+  grid-template-columns: 4fr 7fr;
+  grid-gap: 2rem 2rem;
+}
+
+button.confirmationButton{
+  background-color: #161616;
+  border: none;
+  color: white;
+  padding: 10px 30px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 20px;
+  }
+
+button.confirmationButton:hover{
+  background-color: #2b3860;
+
+}
+
+#selectedMenuView{
+background-color: #242424;
+padding: 2rem;
 }
 
 .inputTypeDescription{
@@ -46,13 +73,7 @@
   border-top: solid 1px #fff;
   border-bottom: solid 1px #fff;
   padding-left: 20px;
-}
-
-.inputDescription{
-  position: relative;
-  font-size: 25px;
-  padding: 15px;
-  margin: 15px;
+  margin: 2rem 0 2rem 0;
 }
 
 .inputBox{
@@ -60,38 +81,60 @@
   margin-left: 300px;
 }
 
-input{
-  font-size: 15px;
-  border-radius: 5px;
+section > input, section > div > input{
+  font-size: 0.6rem;
+  border-radius: 0.2rem;
   border: 1px;
-  padding: 8px;
-  margin: 5px;
-  width: 300px;
-  height: 50px;
+  padding: 0.1rem;
+  width: 4rem;
+  height: 2rem;
   background-color: #fff;
 }
 
-input:focus, input:hover{
+input.dataDescr{
+  width: 80%;
+}
+
+section > input:focus, input:hover{
   background-color: #f2f4f7;
 }
 
-label{
-  height: 50px;
-  padding: 12px;
-  float: left;
-}
 
-.changeUserData{
+.cancelChangeRequest, .changeConfirmation{
+  display: none;
   margin-left: auto;
   margin-right: auto;
-  padding: 30px;
-  font-size: 20px;
+  margin-bottom: 0.1rem;
+  font-size: 0.6rem;
   color: #fff;
   background-color: #767b91;
   border-radius: 5px;
-  width: 30%;
 }
 
-.changeUserData:hover, .changeUserData:focus{
-  background-color: #2a324b;
+form textarea{
+  height: 30rem;
+  border-radius: 0.2rem;
+}
+
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #3C3C3C;
+}
+
+.deleteFromCart{
+  border-radius: 2px;
+  background-color: #161616;
+  border: none;
+  color: #fff;
+  padding: 0.7rem 1.7rem 0.7rem 1.7rem;
 }
